@@ -12,4 +12,5 @@ userRoute.post("/logout", AuthController.logout);
 userRoute.get("/refresh", AuthController.refresh);
 userRoute.get("/get-user", authMiddleware, AuthController.getUser);
 userRoute.patch("/update-user", authMiddleware, AuthController.updateUser);
+
 module.exports = userRoute;
