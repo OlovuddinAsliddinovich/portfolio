@@ -29,7 +29,6 @@ function adminAuthMiddleware(req, res, next) {
 }
 
 function adminMiddleware(req, res, next) {
-  console.log(req.user);
   if (req.user.role !== "admin") {
     return next(BaseError.AdminUnathorizedError());
   }

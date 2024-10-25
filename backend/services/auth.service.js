@@ -92,7 +92,9 @@ class AuthService {
     if (!existUser) {
       throw BaseError.BadRequest("User not found!");
     }
-    existUser.image.length > 1 ? FileService.delete(existUser.image) : null;
+    existUser.image.length > 0 && image
+      ? FileService.delete(existUser.image)
+      : null;
     const fileName = image ? FileService.save(image) : existUser.image;
     const userPayload = tokenService.validateAccessToken(accessToken);
 
