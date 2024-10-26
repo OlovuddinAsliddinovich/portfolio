@@ -9,6 +9,7 @@ const fileUpload = require("express-fileupload");
 const adminRoute = require("./routes/admin.route");
 const courseRoute = require("./routes/course.route");
 const commentRoute = require("./routes/comment.route");
+const courseModuleRoute = require("./routes/course.module.route");
 
 const app = express();
 
@@ -33,6 +34,8 @@ app.use("/api/admin", adminRoute);
 app.use("/api/auth", userRoute);
 app.use("/api/course", courseRoute);
 app.use("/api/courses", commentRoute);
+app.use("/api/module", courseModuleRoute);
+
 // error middleware
 
 app.use(errorMiddleware);

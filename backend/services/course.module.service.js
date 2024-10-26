@@ -1,0 +1,85 @@
+const BaseError = require("../errors/base.error");
+const Course = require("../models/course.model");
+const Module = require("../models/course.module.model");
+
+class CourseModuleService {
+  async create(data, courseId) {
+    const course = await Course.findById(courseId).populate("modules");
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    const moduleExist = course.modules.some(
+      (module) => module.title === data.title
+    );
+
+    if (moduleExist)
+      throw BaseError.BadRequest("Bunday nomli modul allaqachon yaratilgan!");
+
+    const module = await Module.create({
+      title: data.title,
+      videos: data.videos,
+    });
+
+    course.modules.push(module._id);
+    await course.save();
+
+    return {
+      message: "Module kursingizga muvaffaqqiyatli qo'shildi",
+      module,
+    };
+  }
+
+  async update(courseId, moduleId, data) {
+    const course = await Course.findById(courseId);
+
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    if (!course.modules.includes(moduleId))
+      throw BaseError.BadRequest("Module not found!");
+
+    const updateModule = await Module.findByIdAndUpdate(moduleId, data, {
+      new: true,
+    });
+
+    return updateModule;
+  }
+
+  async getAll(courseId) {
+    const course = await Course.findById(courseId).populate("modules");
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    return course.modules;
+  }
+
+  async getOne(courseId, moduleId) {
+    const course = await Course.findById(courseId).populate("modules");
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    const oneModule = course.modules.find(
+      (module) => module._id.toString() === moduleId
+    );
+
+    return oneModule;
+  }
+
+  async deleteModule(courseId, moduleId) {
+    const course = await Course.findById(courseId).populate("modules");
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    const moduleIndex = course.modules.findIndex(
+      (mod) => mod._id.toString() === moduleId
+    );
+
+    if (!moduleIndex) {
+      return null;
+    }
+
+    const deleteModul = course.modules[moduleIndex];
+    course.modules.splice(moduleIndex, 1);
+    await course.save();
+
+    const removeModule = await Module.findByIdAndDelete(deleteModul);
+    return removeModule;
+  }
+}
+
+module.exports = new CourseModuleService();
