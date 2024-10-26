@@ -1,3 +1,4 @@
+const CourseDto = require("../dtos/course.dto");
 const BaseError = require("../errors/base.error");
 const Course = require("../models/course.model");
 const createSlug = require("../services/slug.generate");
@@ -11,8 +12,10 @@ class CourseService {
     }
     data.slug = createSlug(data.title);
     data.image = image ? image : null;
+
     const course = await Course.create(data);
-    return course;
+    const courseDto = new CourseDto(course);
+    return courseDto;
   }
 
   async getAllCourses() {
@@ -20,7 +23,13 @@ class CourseService {
   }
 
   async getOneCourse(id) {
-    return await Course.findById(id);
+    const course = await Course.findById(id);
+
+    if (!course) {
+      throw BaseError.BadRequest("Course not found!");
+    }
+    const courseDto = new CourseDto(course);
+    return courseDto;
   }
 
   async updateCourse(data, picture, id) {
@@ -45,7 +54,9 @@ class CourseService {
       new: true,
     });
 
-    return course;
+    const courseDto = new CourseDto(course);
+
+    return courseDto;
   }
 
   async deleteCourse(id) {

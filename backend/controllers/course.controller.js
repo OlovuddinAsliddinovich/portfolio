@@ -10,6 +10,7 @@ class CourseController {
       const course = await CourseService.create(req.body, files);
       return res.status(201).json(course);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }
