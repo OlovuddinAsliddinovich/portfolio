@@ -58,7 +58,17 @@ class CourseController {
       const deletedCourse = await CourseService.deleteCourse(id);
       return res.status(200).json(deletedCourse);
     } catch (error) {
-      console.log(error);
+      next(error);
+    }
+  }
+
+  async enrollCourse(req, res, next) {
+    try {
+      const { courseId } = req.params;
+      const userId = req.user.id;
+      const result = await CourseService.enrollCourse(courseId, userId);
+      return res.status(200).json(result);
+    } catch (error) {
       next(error);
     }
   }

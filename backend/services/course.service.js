@@ -3,6 +3,7 @@ const BaseError = require("../errors/base.error");
 const Course = require("../models/course.model");
 const createSlug = require("../services/slug.generate");
 const FileService = require("./file.service");
+const User = require("../models/user.model");
 class CourseService {
   async create(data, picture) {
     const image = FileService.saveCourseImage(picture);
@@ -68,6 +69,26 @@ class CourseService {
       FileService.deleteCourseImage(existCourse.image);
     }
     return await Course.findByIdAndDelete(id);
+  }
+
+  async enrollCourse(courseId, userId) {
+    const course = await Course.findById(courseId);
+    const user = await User.findById(userId);
+
+    if (!course) throw BaseError.BadRequest("Course not found!");
+    if (!user) throw BaseError.BadRequest("User not found!");
+
+    if (user.enrolledCourses.includes(courseId)) {
+      throw BaseError.BadRequest("You are already enrolled in this course!");
+    }
+
+    user.enrolledCourses.push(courseId);
+    await user.save();
+
+    course.students.push(userId);
+    await course.save();
+
+    return { message: "Siz kursga muvaffaqqiyatli qo'shildingiz!" };
   }
 }
 

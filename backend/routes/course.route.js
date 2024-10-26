@@ -6,6 +6,7 @@ const {
   adminAuthMiddleware,
   adminMiddleware,
 } = require("../middlewares/admin.auth.middleware");
+const authMiddleware = require("../middlewares/auth.middleware");
 
 courseRoute.get("/get-all", CourseController.getAllCourses);
 courseRoute.post(
@@ -29,6 +30,12 @@ courseRoute.delete(
   adminAuthMiddleware,
   adminMiddleware,
   CourseController.deleteCourse
+);
+
+courseRoute.post(
+  "/:courseId/enroll",
+  authMiddleware,
+  CourseController.enrollCourse
 );
 
 module.exports = courseRoute;

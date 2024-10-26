@@ -8,6 +8,7 @@ const errorMiddleware = require("./middlewares/error.middleware");
 const fileUpload = require("express-fileupload");
 const adminRoute = require("./routes/admin.route");
 const courseRoute = require("./routes/course.route");
+const commentRoute = require("./routes/comment.route");
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use(cookieParser({}));
 app.use("/api/admin", adminRoute);
 app.use("/api/auth", userRoute);
 app.use("/api/course", courseRoute);
-
+app.use("/api/courses", commentRoute);
 // error middleware
 
 app.use(errorMiddleware);
