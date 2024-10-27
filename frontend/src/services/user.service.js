@@ -10,6 +10,7 @@ export class UserService {
     return response.data;
   }
   async logout() {
+    localStorage.removeItem("accessToken");
     await $api.post("/logout");
   }
   async getUser(token) {

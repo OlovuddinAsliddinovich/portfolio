@@ -29,8 +29,8 @@ const App = () => {
       localStorage.setItem("accessToken", response.accessToken);
       dispatch(signUserSuccess(response.user));
     } catch (error) {
-      dispatch(signUserFailure(error));
-      console.log("Error check auth: ", error);
+      dispatch(signUserFailure(error?.response?.data?.message));
+      await UserService.logout();
     }
   };
   useEffect(() => {

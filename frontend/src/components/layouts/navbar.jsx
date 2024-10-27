@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaTelegram } from "react-icons/fa";
+import { FaTelegram, FaUserTie } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 import { RxMoon, RxAvatar } from "react-icons/rx";
 import { HiOutlineChatAlt } from "react-icons/hi";
@@ -90,11 +90,11 @@ const Navbar = () => {
               mode ? "text-white" : "text-gray-950"
             }`}
           >
-            <Loader2
-              className={`${
-                mode ? "text-gray-950" : "text-white"
-              } animate-spin`}
-            />
+            <Avatar>
+              <AvatarFallback>
+                <FaUserTie className="text-[20px]" />
+              </AvatarFallback>
+            </Avatar>
           </Button>
         ) : loggedIn ? (
           <Button

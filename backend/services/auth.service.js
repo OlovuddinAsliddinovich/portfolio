@@ -47,14 +47,14 @@ class AuthService {
   }
   async refresh(refreshToken) {
     if (!refreshToken) {
-      throw BaseError.BadRequest("Bad authorization!");
+      throw BaseError.BadRequest("Not authorization!");
     }
 
     const userPayload = tokenService.validateRefreshToken(refreshToken);
     const tokenDb = tokenService.findToken(refreshToken);
 
     if (!userPayload || !tokenDb) {
-      throw BaseError.UnauthorizedError();
+      throw BaseError.BadRequest("Not authorization!");
     }
 
     const user = await User.findById(userPayload.id);

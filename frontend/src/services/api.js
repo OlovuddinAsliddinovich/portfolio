@@ -1,4 +1,5 @@
 import axios from "axios";
+import userService from "./user.service";
 
 export const API_URL_AUTH = "http://localhost:5000/api/auth";
 
@@ -35,7 +36,7 @@ $axios.interceptors.response.use(
       } catch (error) {
         console.log("Not authorized!");
         localStorage.removeItem("accessToken");
-        window.location.href = "/sign-in";
+        await userService.logout();
       }
     }
     throw error;
