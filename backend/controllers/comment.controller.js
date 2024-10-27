@@ -14,6 +14,32 @@ class CommentController {
       next(error);
     }
   }
+
+  async getAll(req, res, next) {
+    try {
+      const { courseId } = req.params;
+      const result = await CommentService.getAll(courseId);
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deleteComment(req, res, next) {
+    try {
+      const { courseId, commentId } = req.params;
+      const deletedComment = await CommentService.deleteComment(
+        courseId,
+        commentId
+      );
+      return res.status(200).json({
+        message: "Delete successfully comment!",
+        deletedComment,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new CommentController();

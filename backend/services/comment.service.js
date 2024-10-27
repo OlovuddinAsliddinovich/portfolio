@@ -26,6 +26,27 @@ class CommentService {
 
     return comment;
   }
+
+  async getAll(courseId) {
+    const course = await Course.findById(courseId).populate("comments");
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    return course.comments;
+  }
+
+  async deleteComment(courseId, commentId) {
+    const course = await Course.findById(courseId);
+    if (!course) throw BaseError.BadRequest("Course not found!");
+
+    const deletedCommentIndex = course.comments.findIndex(
+      (com) => com.toString() === commentId
+    );
+    course.comments.splice(deletedCommentIndex, 1);
+    await course.save();
+
+    const deleteComment = await Comment.findByIdAndDelete(commentId);
+    return deleteComment;
+  }
 }
 
 module.exports = new CommentService();

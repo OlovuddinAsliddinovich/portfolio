@@ -3,41 +3,42 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const userRoute = require("./routes/user.route");
-const errorMiddleware = require("./middlewares/error.middleware");
 const fileUpload = require("express-fileupload");
+
+// Routers
+const userRoute = require("./routes/user.route");
 const adminRoute = require("./routes/admin.route");
 const courseRoute = require("./routes/course.route");
 const commentRoute = require("./routes/comment.route");
 const courseModuleRoute = require("./routes/course.module.route");
+const videoRoute = require("./routes/video.route");
+const errorMiddleware = require("./middlewares/error.middleware");
 
 const app = express();
-
 dotenv.config();
 
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(fileUpload({}));
+app.use(fileUpload());
 app.use(
   cors({
     credentials: true,
     origin: process.env.CLIENT_URL,
   })
 );
-
 app.use(express.static("static"));
-app.use(cookieParser({}));
+app.use(cookieParser());
 
 // Routes
 app.use("/api/admin", adminRoute);
 app.use("/api/auth", userRoute);
 app.use("/api/course", courseRoute);
-app.use("/api/courses", commentRoute);
+app.use("/api/comments", commentRoute);
 app.use("/api/module", courseModuleRoute);
+app.use("/api/videos", videoRoute);
 
 // error middleware
-
 app.use(errorMiddleware);
 
 const startApp = async () => {
@@ -48,7 +49,7 @@ const startApp = async () => {
       console.log("MongoDB connected");
     });
   } catch (error) {
-    console.log("MongoDB error: ", error);
+    console.log("MongoDB connection error:", error);
   }
 };
 
