@@ -2,11 +2,12 @@ const CommentService = require("../services/comment.service");
 class CommentController {
   async writeComment(req, res, next) {
     try {
-      const { courseId } = req.params;
+      const { refModel, refId } = req.params;
       const userId = req.user.id;
       const comment = await CommentService.writeComment(
         req.body,
-        courseId,
+        refModel,
+        refId,
         userId
       );
       return res.status(201).json(comment);
@@ -17,8 +18,8 @@ class CommentController {
 
   async getAll(req, res, next) {
     try {
-      const { courseId } = req.params;
-      const result = await CommentService.getAll(courseId);
+      const { refModel, refId } = req.params;
+      const result = await CommentService.getAll(refModel, refId);
       return res.status(200).json(result);
     } catch (error) {
       next(error);
@@ -27,9 +28,10 @@ class CommentController {
 
   async deleteComment(req, res, next) {
     try {
-      const { courseId, commentId } = req.params;
+      const { refModel, refId, commentId } = req.params;
       const deletedComment = await CommentService.deleteComment(
-        courseId,
+        refModel,
+        refId,
         commentId
       );
       return res.status(200).json({

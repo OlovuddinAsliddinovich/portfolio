@@ -5,7 +5,7 @@ const videoSchema = new Schema(
     title: { type: String, required: true },
     duration: { type: String, required: true },
     url: { type: String, required: true },
-    module: { type: Schema.Types.ObjectId, ref: "CourseModule" },
+    refId: { type: Schema.Types.ObjectId, required: true },
   },
   { timestamps: true }
 );

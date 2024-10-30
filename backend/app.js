@@ -13,6 +13,7 @@ const commentRoute = require("./routes/comment.route");
 const courseModuleRoute = require("./routes/course.module.route");
 const videoRoute = require("./routes/video.route");
 const errorMiddleware = require("./middlewares/error.middleware");
+const projectRoute = require("./routes/project.route");
 
 const app = express();
 dotenv.config();
@@ -34,8 +35,9 @@ app.use(cookieParser());
 app.use("/api/admin", adminRoute);
 app.use("/api/auth", userRoute);
 app.use("/api/course", courseRoute);
+app.use("/api/projects", projectRoute);
 app.use("/api/comments", commentRoute);
-app.use("/api/module", courseModuleRoute);
+app.use("/api/course-module", courseModuleRoute);
 app.use("/api/videos", videoRoute);
 
 // error middleware

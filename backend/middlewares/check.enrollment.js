@@ -1,15 +1,26 @@
 const User = require("../models/user.model");
+
 module.exports = async function (req, res, next) {
   try {
-    const { courseId } = req.params;
+    const { refModel, refId } = req.params;
     const userId = req.user.id;
 
     const user = await User.findById(userId);
 
-    if (!user || !user.enrolledCourses.includes(courseId)) {
-      return res.status(403).json({
-        message: "Siz kursga qo'shilmagansiz!",
-      });
+    if (!user) {
+      return res.status(403).json({ message: "Foydalanuvchi topilmadi!" });
+    }
+
+    if (refModel === "Course" && !user.enrolledCourses.includes(refId)) {
+      return res
+        .status(403)
+        .json({ message: "Siz ushbu kursga yozilmagansiz!" });
+    }
+
+    if (refModel === "Project" && !user.enrolledProjects.includes(refId)) {
+      return res
+        .status(403)
+        .json({ message: "Siz ushbu loyihaga yozilmagansiz!" });
     }
 
     next();

@@ -3,9 +3,10 @@ const { model, Schema } = require("mongoose");
 const commentSchema = new Schema(
   {
     text: { type: String, required: true },
-    rating: { type: Number, min: 1, max: 5, required: true },
-    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    course: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+    refModel: { type: String, enum: ["Course", "Project"], required: true },
+    refId: { type: Schema.Types.ObjectId, required: true },
+    rating: { type: Number, min: 1, max: 5 },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   },
   { timestamps: true }
 );

@@ -8,16 +8,16 @@ const authMiddleware = require("../middlewares/auth.middleware");
 const checkEnrollment = require("../middlewares/check.enrollment");
 
 commentRoute.post(
-  "/:courseId/comment",
+  "/:refModel/:refId/comment",
   authMiddleware,
   checkEnrollment,
   CommentController.writeComment
 );
 
-commentRoute.get("/:courseId/comment-all", CommentController.getAll);
+commentRoute.get("/:refModel/:refId/comments", CommentController.getAll);
 
 commentRoute.delete(
-  "/:courseId/delete/:commentId",
+  "/:refModel/:refId/delete/:commentId",
   adminAuthMiddleware,
   adminMiddleware,
   CommentController.deleteComment

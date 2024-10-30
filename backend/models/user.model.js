@@ -11,6 +11,7 @@ const userSchema = new Schema(
     bio: { type: String, default: "" },
     image: { type: String, default: "" },
     enrolledCourses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+    enrolledProjects: [{ type: Schema.Types.ObjectId, ref: "Project" }],
   },
   { timestamps: true }
 );

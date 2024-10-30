@@ -69,6 +69,7 @@ class CourseController {
       const result = await CourseService.enrollCourse(courseId, userId);
       return res.status(200).json(result);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }

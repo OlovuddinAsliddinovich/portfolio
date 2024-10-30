@@ -6,11 +6,11 @@ const FileService = require("./file.service");
 const User = require("../models/user.model");
 class CourseService {
   async create(data, picture) {
-    const image = FileService.saveCourseImage(picture);
     const existCourse = await Course.findOne({ title: data.title });
     if (existCourse) {
       throw BaseError.BadRequest("Course already exist!");
     }
+    const image = FileService.saveCourseImage(picture);
     data.slug = createSlug(data.title);
     data.image = image ? image : null;
 
@@ -81,7 +81,6 @@ class CourseService {
     if (user.enrolledCourses.includes(courseId)) {
       throw BaseError.BadRequest("You are already enrolled in this course!");
     }
-
     user.enrolledCourses.push(courseId);
     await user.save();
 

@@ -9,8 +9,11 @@ class AuthController {
       if (!errors.isEmpty()) {
         return BaseError.BadRequest("Error with validation!", errors.array());
       }
-
-      const user = await AuthService.register(req.body);
+      let file = "";
+      if (req.files) {
+        file = req.files.image;
+      }
+      const user = await AuthService.register(req.body, file);
       res.cookie("refreshToken", user.refreshToken, {
         httpOnly: true,
         maxAge: 30 * 24 * 60 * 60 * 1000,

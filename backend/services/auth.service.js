@@ -6,15 +6,17 @@ const BaseError = require("../errors/base.error");
 const FileService = require("./file.service");
 
 class AuthService {
-  async register(props) {
+  async register(props, picture) {
     const existUser = await User.findOne({ email: props.email });
     if (existUser) {
       throw BaseError.BadRequest("User already exist!");
     }
     const hashPassword = await bcrypt.hash(props.password, 10);
+    const image = picture ? FileService.save(picture) : "";
     const newUser = {
       ...props,
       password: hashPassword,
+      image,
     };
 
     const user = await User.create(newUser);
