@@ -65,19 +65,17 @@ class CourseModuleService {
     const course = await Course.findById(courseId).populate("modules");
     if (!course) throw BaseError.BadRequest("Course not found!");
 
-    const moduleIndex = course.modules.findIndex(
+    const moduleIndex = course.modules.find(
       (mod) => mod._id.toString() === moduleId
     );
 
     if (!moduleIndex) {
-      return null;
+      throw BaseError.BadRequest("Module not found!");
     }
 
-    const deleteModul = course.modules[moduleIndex];
     course.modules.splice(moduleIndex, 1);
     await course.save();
-
-    const removeModule = await Module.findByIdAndDelete(deleteModul);
+    const removeModule = await Module.findByIdAndDelete(moduleIndex._id);
     return removeModule;
   }
 }
