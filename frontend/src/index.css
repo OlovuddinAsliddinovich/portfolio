@@ -106,6 +106,10 @@
   animation: login 2s linear infinite;
 }
 
+.img-animation {
+  animation: imgBlurAnimation 0.5s linear;
+}
+
 @keyframes login {
   0% {
     box-shadow: 0 0 20px rgb(46, 46, 232);
@@ -115,5 +119,19 @@
   }
   100% {
     box-shadow: 0 0 20px rgb(1, 171, 57);
+  }
+}
+
+@keyframes imgBlurAnimation {
+  0% {
+    filter: blur(40px);
+    z-index: 30;
+  }
+  50% {
+    filter: blur(10px);
+    z-index: 30;
+  }
+  100% {
+    filter: blur(0px);
   }
 }

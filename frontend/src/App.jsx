@@ -18,6 +18,12 @@ import {
   signUserStart,
   signUserSuccess,
 } from "./slice/user-slice";
+import AdminPage from "./components/pages/admin";
+import AdminCourses from "./components/pages/admin-courses";
+import AdminProjects from "./components/pages/admin-projects";
+import AdminCodeResource from "./components/pages/admin-code-resource";
+import AdminUsers from "./components/pages/admin-users";
+import AdminLogin from "./components/pages/admin.login";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +48,12 @@ const App = () => {
     <>
       <ToastContainer autoClose={1000} />
       <Routes>
+        <Route path="/admin-panel" element={<AdminPage />} />
+        <Route path="/admin/courses" element={<AdminCourses />} />
+        <Route path="/admin/projects" element={<AdminProjects />} />
+        <Route path="/admin/code-resources" element={<AdminCodeResource />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="admin-sign" element={<AdminLogin />} />
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/projects" element={<Projects />} />

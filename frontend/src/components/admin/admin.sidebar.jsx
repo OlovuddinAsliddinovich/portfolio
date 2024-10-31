@@ -13,11 +13,11 @@ import { IoIosSpeedometer } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const { mode } = useSelector((state) => state.mode);
 
   return (
-    <div className="flex flex-col justify-between px-4 py-6 h-[90vh] font-montserrat">
+    <div className="flex flex-col justify-between px-4 py-6 h-[90vh] font-montserrat ">
       <ul
         className={`${
           mode ? "text-black" : "text-white"
@@ -36,11 +36,12 @@ const Sidebar = () => {
                       : "bg-gray-800 text-white"
                   }`
                 : ""
+            }
             } w-full ${
               mode ? "hover:bg-gray-300 text-gray-700" : "hover:bg-gray-800"
             } text-[15px] transition-all rounded-sm p-2 px-4 flex justify-start items-center gap-2`
           }
-          to={"/"}
+          to={"/admin-panel"}
         >
           <FaHome className="text-[16px]" />
           Bosh sahifa
@@ -59,7 +60,7 @@ const Sidebar = () => {
               mode ? "hover:bg-gray-300 text-gray-700" : "hover:bg-gray-800"
             } text-[15px] transition-all rounded-sm p-2 px-4 flex justify-start items-center gap-2`
           }
-          to={"/courses"}
+          to={"/admin/courses"}
         >
           <FaCode className="text-[16px]" />
           Kurslar
@@ -78,7 +79,7 @@ const Sidebar = () => {
               mode ? "hover:bg-gray-300 text-gray-700" : "hover:bg-gray-800"
             } text-[15px] transition-all rounded-sm p-2 px-4 flex justify-start items-center gap-2`
           }
-          to={"/projects"}
+          to={"/admin/projects"}
         >
           <FaCodeBranch className="text-[16px]" />
           Loyihalar
@@ -97,7 +98,7 @@ const Sidebar = () => {
               mode ? "hover:bg-gray-300 text-gray-700" : "hover:bg-gray-800"
             } text-[15px] transition-all rounded-sm p-2 px-4 flex justify-start items-center gap-2`
           }
-          to={"/code-resource"}
+          to={"/admin/code-resources"}
         >
           <FaFolderMinus className="text-[16px]" />
           Kod manbalari
@@ -116,10 +117,10 @@ const Sidebar = () => {
               mode ? "hover:bg-gray-300 text-gray-700" : "hover:bg-gray-800"
             } text-[15px] transition-all rounded-sm p-2 px-4 flex justify-start items-center gap-2`
           }
-          to={"/profile"}
+          to={"/admin/users"}
         >
           <IoIosSpeedometer className="text-[16px]" />
-          Profil
+          Foydalanuvchilar
         </NavLink>
       </ul>
       <div>
@@ -156,4 +157,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

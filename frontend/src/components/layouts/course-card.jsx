@@ -47,7 +47,7 @@ const CourseCard = ({
       <img
         src={img}
         alt="backend"
-        className="w-full object-cover h-[190px] rounded-sm"
+        className="w-full object-cover h-[190px] rounded-sm img-animation"
       />
       <CardTitle
         className={`text-xl font-bold font-spaceGrotesk pt-2 ${

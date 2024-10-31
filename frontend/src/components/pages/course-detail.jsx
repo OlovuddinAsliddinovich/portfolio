@@ -265,7 +265,7 @@ const CourseDetail = () => {
             }`}
           >
             {courseForWhom.map((item) => (
-              <div className="flex gap-2">
+              <div className="flex gap-2" key={item}>
                 &bull;{" "}
                 <li
                   key={item}
@@ -291,7 +291,10 @@ const CourseDetail = () => {
           </div>
           <div className="grid grid-cols-1 xs:grid-cols-2 xs:gap-4 gap-1">
             {reviews.map((item) => (
-              <div className="border-t pt-[20px] border-gray-600 mt-8">
+              <div
+                className="border-t pt-[20px] border-gray-600 mt-8"
+                key={item.name}
+              >
                 <div className="flex gap-2 items-center font-montserrat">
                   <h1 className="text-2xl bg-blue-500 w-[50px] h-[50px] flex items-center justify-center rounded-full">
                     {item.name.charAt(0).toUpperCase()}

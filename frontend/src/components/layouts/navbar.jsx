@@ -15,13 +15,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { GrSettingsOption } from "react-icons/gr";
 import { LuLogOut } from "react-icons/lu";
-import { Loader2 } from "lucide-react";
 import UserService from "@/services/user.service";
-import {
-  signOutUser,
-  signUserStart,
-  signUserSuccess,
-} from "@/slice/user-slice";
+import { signOutUser, signUserStart } from "@/slice/user-slice";
 import { toast } from "react-toastify";
 const Navbar = () => {
   const { mode } = useSelector((state) => state.mode);

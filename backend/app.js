@@ -62,6 +62,7 @@ app.use(
   })
 );
 app.use(express.static("static"));
+app.use(express.static("courses"));
 app.use(cookieParser());
 
 // Routes

@@ -17,9 +17,7 @@ class AdminController {
       const { username, password } = req.body;
       const admin = await AdminService.loginAdmin({ username, password });
       res.cookie("adminToken", admin.token, {
-        httpOnly: true,
         maxAge: 1 * 24 * 60 * 60 * 1000,
-        secure: true,
       });
       return res.status(200).json(admin);
     } catch (error) {

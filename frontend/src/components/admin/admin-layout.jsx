@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import Navbar from "../layouts/navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import { CiTextAlignLeft } from "react-icons/ci";
@@ -15,9 +14,10 @@ import {
   FaTelegram,
   FaYoutube,
 } from "react-icons/fa";
-import SidebarTablet from "./sidebartablet";
+import AdminSidebar from "./admin.sidebar";
+import AdminNavbar from "./admin-navbar";
 
-const Layout = ({ children }) => {
+const AdminLayout = ({ children }) => {
   const { mode, sidebarOpen } = useSelector((state) => state.mode);
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
           mode ? "bg-light" : "bg-slate"
         } z-[9]`}
       >
-        <Navbar />
+        <AdminNavbar />
 
         <div
           className={`border-t border-gray-700 ${
@@ -101,8 +101,7 @@ const Layout = ({ children }) => {
               mode ? "bg-light" : "bg-slate"
             } h-screen z-[-1]`}
           >
-            <SidebarTablet />
-            <Sidebar />
+            <AdminSidebar />
           </div>
           <div
             className={`absolute md:left-[288px] left-0 top-0 md:w-[calc(100%-288px)] w-full ${
@@ -110,7 +109,7 @@ const Layout = ({ children }) => {
             } h-[calc(100vh-80px)] overflow-y-scroll`}
           >
             <div
-              className={`container mx-auto py-10 px-3 lg:px-12 w-full ${
+              className={`container mx-auto py-4 px-3 lg:px-12 w-full ${
                 mode ? "text-gray-800" : "text-white"
               }`}
             >
@@ -123,4 +122,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default AdminLayout;

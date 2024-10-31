@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "./navbar";
-import LoadingBar from "react-top-loading-bar";
 
 const SignLayout = ({ children }) => {
   const { mode } = useSelector((state) => state.mode);
-  const ref = useRef();
   return (
     <div className={`${mode ? "bg-white" : "bg-slate"} scroll-smooth`}>
       <div
@@ -13,7 +11,6 @@ const SignLayout = ({ children }) => {
           mode ? "bg-light" : "bg-slate"
         } z-[9]`}
       >
-        <LoadingBar color="blue" ref={ref} />
         <Navbar />
         <div className="relative border-t-[1px] border-gray-700">
           <div
