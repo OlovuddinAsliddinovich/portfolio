@@ -14,6 +14,7 @@ import EditProject from "../admin/projects/edit-project";
 import DeleteProject from "../admin/projects/delete-project";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "../ui/breadcrumb";
 import CoursesSkeleton from "../skeletons/courses.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminProjects = () => {
   const navigate = useNavigate();
@@ -74,6 +75,10 @@ const AdminProjects = () => {
   }, []);
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin | Loyihalar</title>
+        <meta name="description" content="Admin | Loyihalar" />
+      </Helmet>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

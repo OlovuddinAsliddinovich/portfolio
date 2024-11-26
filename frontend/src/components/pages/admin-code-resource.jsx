@@ -17,6 +17,7 @@ import EditCodeResource from "../admin/code-resource/edit-code-resource";
 import { Loader2 } from "lucide-react";
 import DeleteCodeResource from "../admin/code-resource/delete-code-resource";
 import CodeSkeleton from "../skeletons/code.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminCodeResource = () => {
   const navigate = useNavigate();
@@ -48,6 +49,10 @@ const AdminCodeResource = () => {
   }, []);
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin | Kod manbalar</title>
+        <meta name="description" content="Kod manbalar" />
+      </Helmet>
       <div className="w-full container mx-auto h-[80px] flex items-start xs:flex-row flex-col justify-between">
         <h1 className={`font-bold text-2xl text-center`}>Kod manbalari</h1>
         <Button onClick={() => setAddOpen(true)} className="w-full xs:w-[200px] bg-green-600 hover:bg-blue-600 float-end">

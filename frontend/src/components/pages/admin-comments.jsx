@@ -20,6 +20,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import CommentSkeleton from "../skeletons/comment.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminComments = () => {
   const adminToken = Cookies.get("adminToken");
@@ -34,7 +35,6 @@ const AdminComments = () => {
     try {
       const response = await commentService.getAll();
       setData(response);
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -45,9 +45,8 @@ const AdminComments = () => {
   const deleteComment = async (refModel, refId, commentId) => {
     setDeleteLoading(true);
     try {
-      const response = await commentService.deleteComment(refModel, refId, commentId);
+      await commentService.deleteComment(refModel, refId, commentId);
       allComments();
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -63,6 +62,10 @@ const AdminComments = () => {
   }, []);
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin | Foydalanuvchi Sharhlari</title>
+        <meta name="description" content="Foydalanuvchi Sharhlari" />
+      </Helmet>
       <div className={`p-6 rounded-lg shadow-lg w-full max-w-4xl mx-auto ${mode ? "bg-light" : "bg-slate text-white"}`}>
         <h2 className="text-xl font-bold mb-4 border-b pb-2">Foydalanuvchi Sharhlari</h2>
         {loading ? (

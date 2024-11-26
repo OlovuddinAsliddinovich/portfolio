@@ -12,6 +12,7 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import CardSkeleton from "../skeletons/card.skeleton";
 import CourseCardSkeleton from "../skeletons/course.card.skeleton";
+import { Helmet } from "react-helmet";
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -66,6 +67,13 @@ const Courses = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Kurslar</title>
+        <meta
+          name="description"
+          content="Onlayn dasturlash kurslari: JavaScript, React, va boshqa texnologiyalarni o'rganing. Har bir kurs interaktiv va amaliy misollar bilan to'ldirilgan. Tezkor bilim olish va yangi ko'nikmalarni rivojlantirish uchun bizning platformamizni tanlang."
+        />
+      </Helmet>
       <header className="flex justify-between items-start xl:items-center gap-2 flex-col xl:flex-row">
         <div className="xl:text-2xl md:text-xl font-bold font-spaceGrotesk flex gap-2">
           <h2 className="text-blue-500">Kurslar</h2>/

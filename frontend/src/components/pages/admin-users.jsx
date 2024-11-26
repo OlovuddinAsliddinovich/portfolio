@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
 import UsersSkeleton from "../skeletons/users.skeleton";
 import { Fragment } from "react";
+import { Helmet } from "react-helmet";
 
 const AdminUsers = () => {
   const navigate = useNavigate();
@@ -68,6 +69,10 @@ const AdminUsers = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin | Foydalanuvchilar</title>
+        <meta name="description" content="Foydalanuvchilar" />
+      </Helmet>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

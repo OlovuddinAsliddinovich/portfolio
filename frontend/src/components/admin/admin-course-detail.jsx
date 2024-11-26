@@ -40,6 +40,7 @@ import Cookies from "js-cookie";
 import { secondsToMinutes } from "@/hooks";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
 import CourseDetailSkeleton from "../skeletons/course.detail.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminCourseDetail = () => {
   const { slug } = useParams();
@@ -153,6 +154,10 @@ const AdminCourseDetail = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>{`Kurslar | ${course?.title}`}</title>
+        <meta name="description" content="Kurs ma'lumotlari" />
+      </Helmet>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

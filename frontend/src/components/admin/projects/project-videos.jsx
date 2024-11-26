@@ -15,6 +15,7 @@ import EditVideoProject from "../video-detail/edit-video-project";
 import { getVideosSuccess } from "@/slice/video-slice";
 import DeleteVideoProject from "../video-detail/delete-video-project";
 import VideoItemSkeleton from "@/components/skeletons/video.item.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminProjectVideos = () => {
   const { slug } = useParams();
@@ -58,6 +59,10 @@ const AdminProjectVideos = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>{`Admin | ${project?.title} loyiha`}</title>
+        <meta name="description" content="Videolar" />
+      </Helmet>
       {isLoading ? (
         <div>
           <VideoItemSkeleton />

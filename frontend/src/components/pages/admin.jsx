@@ -12,6 +12,7 @@ import { codeResourcesSuccess } from "@/slice/code-resource.slice";
 import userService from "@/services/user.service";
 import { signUsersSuccess } from "@/slice/user-slice";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -49,6 +50,10 @@ const AdminPage = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin panel</title>
+        <meta name="description" content="Admin panel" />
+      </Helmet>
       <div className="grid sm:grid-cols-2 gird-cols-1 gap-4">
         <div className={`overflow-x-scroll border p-2 ${mode ? "bg-light" : "bg-slate border-gray-700"}`}>
           <h1 className="text-2xl font-semibold font-spaceGrotesk mt-4 mb-2 cursor-default text-center">Kurslar</h1>

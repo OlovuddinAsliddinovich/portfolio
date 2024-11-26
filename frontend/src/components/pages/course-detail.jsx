@@ -26,6 +26,7 @@ import moment from "moment";
 import { useState } from "react";
 import Comments from "../layouts/comments";
 import CourseDetailSkeleton from "../skeletons/course.detail.skeleton";
+import { Helmet } from "react-helmet";
 
 const CourseDetail = () => {
   const { mode } = useSelector((state) => state.mode);
@@ -113,6 +114,10 @@ const CourseDetail = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{course?.title}</title>
+        <meta name="description" content="Kurs haqida ma'lumot" />
+      </Helmet>
       <div className="flex items-center gap-2">
         <Breadcrumb>
           <BreadcrumbList>
@@ -140,7 +145,7 @@ const CourseDetail = () => {
             }`}
           >
             <div className="md2:w-[60%] w-full lg:w-full flex flex-col justify-between items-start gap-2">
-              <h1 className="text-xl xs:text-3xl font-bold font-montserrat mt-4">Murakkab Backend</h1>
+              <h1 className="text-xl xs:text-3xl font-bold font-montserrat mt-4">{course?.title}</h1>
               <p className={`text-[12px] leading-4 font-montserrat pr-4 text-start ${mode ? "text-gray-800" : "text-gray-400"}`}>
                 {course?.description}
               </p>

@@ -11,6 +11,7 @@ import { codeResourceFailure, codeResourcesSuccess, codeResourceStart } from "@/
 import { useEffect } from "react";
 import { useState } from "react";
 import CodeResourceSkeleton from "../skeletons/code.resource.skeleton";
+import { Helmet } from "react-helmet";
 
 const CodeResource = () => {
   const navigate = useNavigate();
@@ -62,6 +63,10 @@ const CodeResource = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Kod manbalari</title>
+        <meta name="description" content="Kod manbalari - Loyihalarning kodlarini o'qish uchun yordam beradi" />
+      </Helmet>
       <header className="flex justify-between items-start xl:items-center gap-2 flex-col xl:flex-row">
         <div className="text-[15px] font-normal text-gray-500 font-spaceGrotesk flex gap-2 flex-wrap">
           <span className={`cursor-pointer hover:${mode ? "text-black" : "text-white"} transition-all duration-200`} onClick={() => navigate("/")}>

@@ -34,6 +34,7 @@ import {
 import Cookies from "js-cookie";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import VideoItemSkeleton from "@/components/skeletons/video.item.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminCourseModuleDetail = () => {
   const { slug, id } = useParams();
@@ -113,6 +114,10 @@ const AdminCourseModuleDetail = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>{module?.title}</title>
+        <meta name="description" content="Modul haqida ma'lumot" />
+      </Helmet>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

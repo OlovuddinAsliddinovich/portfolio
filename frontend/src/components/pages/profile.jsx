@@ -10,6 +10,7 @@ import ProjectCard from "../layouts/project-card";
 import CourseCard from "../layouts/course-card";
 import { Loader2 } from "lucide-react";
 import CourseCardSkeleton from "../skeletons/course.card.skeleton";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { mode } = useSelector((state) => state.mode);
@@ -19,6 +20,10 @@ const Profile = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Profil</title>
+        <meta name="description" content="Profil - foydalanuvchi profili" />
+      </Helmet>
       {user ? (
         <>
           <div className="flex gap-4 justify-between md2:items-center items-start lg:items-start xl:items-center flex-col md2:flex-row lg:flex-col xl:flex-row">

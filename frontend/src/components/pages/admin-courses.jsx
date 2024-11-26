@@ -31,6 +31,7 @@ import {
 } from "../ui/alert-dialog";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
 import CoursesSkeleton from "../skeletons/courses.skeleton";
+import { Helmet } from "react-helmet";
 
 const AdminCourses = () => {
   const navigate = useNavigate();
@@ -83,6 +84,10 @@ const AdminCourses = () => {
   }, []);
   return (
     <AdminLayout>
+      <Helmet>
+        <title>Admin | Kurslar</title>
+        <meta name="description" content="Kurslar ro'yxati" />
+      </Helmet>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

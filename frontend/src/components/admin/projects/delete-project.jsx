@@ -10,9 +10,10 @@ import {
 } from "@/components/ui/alert-dialog";
 import { projectService } from "@/services/project.service";
 import { deleteProjectFailure, deleteProjectSuccess, getProjectsStart, getProjectsSuccess } from "@/slice/project.slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 const DeleteProject = ({ deleteOpen, setDeleteOpen, projectId }) => {
+  const { mode } = useSelector((state) => state.mode);
   const dispatch = useDispatch();
   const deleteProjectHandler = async (id) => {
     dispatch(getProjectsStart());
@@ -31,13 +32,13 @@ const DeleteProject = ({ deleteOpen, setDeleteOpen, projectId }) => {
   };
   return (
     <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
-      <AlertDialogContent>
+      <AlertDialogContent className={mode ? "bg-white" : "bg-gray-800 text-light"}>
         <AlertDialogHeader>
           <AlertDialogTitle>Siz bu loyihani o'chirmoqchimisiz?</AlertDialogTitle>
           <AlertDialogDescription>Bu loyiha butunlay o'chib ketadi! O'chirilsinmi?</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Bekor qilish</AlertDialogCancel>
+          <AlertDialogCancel className={mode ? "" : "text-gray-900"}>Bekor qilish</AlertDialogCancel>
           <AlertDialogAction onClick={() => deleteProjectHandler(projectId)} className="bg-red-500 hover:bg-red-600">
             O'chirish
           </AlertDialogAction>

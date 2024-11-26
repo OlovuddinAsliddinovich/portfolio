@@ -22,6 +22,7 @@ import { Loader2 } from "lucide-react";
 import Comments from "../layouts/comments";
 import moment from "moment";
 import CourseDetailSkeleton from "../skeletons/course.detail.skeleton";
+import { Helmet } from "react-helmet";
 
 const ProjectDetail = () => {
   const { mode } = useSelector((state) => state.mode);
@@ -79,6 +80,10 @@ const ProjectDetail = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{project?.title}</title>
+        <meta name="description" content="Loyiha haqida ma'lumot" />
+      </Helmet>
       <div className="flex items-center gap-2">
         <Breadcrumb>
           <BreadcrumbList>

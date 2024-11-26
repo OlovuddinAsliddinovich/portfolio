@@ -10,6 +10,7 @@ import ProjectCard from "../layouts/project-card";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import CourseCardSkeleton from "../skeletons/course.card.skeleton";
+import { Helmet } from "react-helmet";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -61,6 +62,10 @@ const Projects = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Loyihalar</title>
+        <meta name="description" content="Loyihalar - turli sohalarda sifatli va interaktiv ta'limni taklif qilamiz." />
+      </Helmet>
       <header className="flex justify-between items-start xl:items-center gap-2 flex-col xl:flex-row">
         <div className="xl:text-2xl md:text-xl font-bold font-spaceGrotesk flex gap-2">
           <h2 className="text-blue-500">Loyihalar</h2>/

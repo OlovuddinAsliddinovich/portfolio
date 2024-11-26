@@ -14,6 +14,7 @@ import { IMG_URL } from "@/services";
 import { LuBadgeCheck } from "react-icons/lu";
 import AddVideoProject from "../video-detail/add-video-project";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Helmet } from "react-helmet";
 
 const AdminProjectDetail = () => {
   const { slug } = useParams();
@@ -67,6 +68,10 @@ const AdminProjectDetail = () => {
 
   return (
     <AdminLayout>
+      <Helmet>
+        <title>{`Admin | ${project?.title}`}</title>
+        <meta name="description" content={project?.description} />
+      </Helmet>
       {isLoading ? (
         <h1 className="flex justify-center items-center h-[80vh]">
           <Loader2 className="animate-spin" />
