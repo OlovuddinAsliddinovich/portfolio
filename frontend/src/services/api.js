@@ -1,8 +1,7 @@
 import axios from "axios";
 import userService from "./user.service";
-import { useNavigate } from "react-router-dom";
 
-export const API_URL_AUTH = "http://localhost:5000/api";
+export const API_URL_AUTH = "http://3.85.3.18:5000/api";
 
 export const $axios = axios.create({
   withCredentials: true,
