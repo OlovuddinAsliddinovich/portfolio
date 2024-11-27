@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import { CiTextAlignLeft } from "react-icons/ci";
@@ -87,7 +87,9 @@ const Layout = ({ children }) => {
 
           <div className="relative border-t-[1px] border-gray-700">
             <div className={`fixed w-[288px] top-[80px] left-0 ${mode ? "bg-light" : "bg-slate"} h-screen z-[-1]`}>
-              <SidebarTablet />
+              <>
+                <SidebarTablet />
+              </>
               <>
                 <Sidebar />
               </>
