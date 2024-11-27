@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { IMG_URL } from "@/services";
 import courseModuleService from "@/services/course-module-service";
 import videoService from "@/services/video.service";
 import { getOneModuleSuccess } from "@/slice/course-module-slice";
@@ -84,7 +85,7 @@ const EditVideoCourse = ({ editModal, setEditModal, videoId }) => {
               </div>
               <div className="flex flex-col gap-1 mt-3 text-start">
                 <label htmlFor="link"> Yuklangan Video</label>
-                <video src={`http://localhost:5000/course-videos/${videoDetail?.url}`} controls className="w-[300px] h-[200px] border"></video>
+                <video src={`${IMG_URL}/course-videos/${videoDetail?.url}`} controls className="w-[300px] h-[200px] border"></video>
                 <label htmlFor="link">Video Yuklash</label>
                 <input
                   type="file"

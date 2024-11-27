@@ -11,6 +11,7 @@ import CourseCard from "../layouts/course-card";
 import { Loader2 } from "lucide-react";
 import CourseCardSkeleton from "../skeletons/course.card.skeleton";
 import { Helmet } from "react-helmet";
+import { IMG_URL } from "@/services";
 
 const Profile = () => {
   const { mode } = useSelector((state) => state.mode);
@@ -31,7 +32,7 @@ const Profile = () => {
               <img
                 src={`${
                   user?.image
-                    ? `http://localhost:5000/${user.image}`
+                    ? `${IMG_URL}/${user.image}`
                     : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAaJS0dnDYQ5NkVr30LWhCjQoMLtm6BC0TDA&s"
                 }`}
                 className="w-[100px] h-[100px] object-cover rounded-full cursor-pointer"

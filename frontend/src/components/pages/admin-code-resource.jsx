@@ -14,7 +14,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import EditCodeResource from "../admin/code-resource/edit-code-resource";
-import { Loader2 } from "lucide-react";
 import DeleteCodeResource from "../admin/code-resource/delete-code-resource";
 import CodeSkeleton from "../skeletons/code.skeleton";
 import { Helmet } from "react-helmet";

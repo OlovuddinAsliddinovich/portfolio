@@ -1,12 +1,13 @@
 import ListItemSkeleton from "@/components/skeletons/list.item.skeleton";
 import { Button } from "@/components/ui/button";
+import { IMG_URL } from "@/services";
 import courseModuleService from "@/services/course-module-service";
 import { courseService } from "@/services/course.service";
 import videoService from "@/services/video.service";
 import { getOneModuleSuccess } from "@/slice/course-module-slice";
 import { getOneCourseFailure, getOneCourseStart, getOneCourseSuccess } from "@/slice/course-slice";
 import { setMode } from "@/slice/mode-slice";
-import { getOneVideoFailure, getOneVideoStart, getOneVideoSuccess, getVideosSuccess } from "@/slice/video-slice";
+import { getOneVideoFailure, getOneVideoStart, getOneVideoSuccess } from "@/slice/video-slice";
 import Cookies from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -115,7 +116,7 @@ const ShowVideoCourse = () => {
             ) : (
               <>
                 <ReactPlayer
-                  url={`http://localhost:5000/course-videos/${video?.url}`}
+                  url={`${IMG_URL}/course-videos/${video?.url}`}
                   width={"100%"}
                   height={"100%"}
                   style={{ padding: "0px" }}

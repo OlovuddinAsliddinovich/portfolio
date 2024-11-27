@@ -7,6 +7,7 @@ import { getCoursesSuccess, setCourseFailure, setCourseStart } from "@/slice/cou
 import { courseService } from "@/services/course.service";
 import { toast } from "react-toastify";
 import Textarea from "../admin-ui/textarea";
+import { IMG_URL } from "@/services";
 
 const AdminEditCourse = ({ isEditOpen, setIsEditOpen }) => {
   const { mode } = useSelector((state) => state.mode);
@@ -70,7 +71,7 @@ const AdminEditCourse = ({ isEditOpen, setIsEditOpen }) => {
             <Input title={"Kurs nomi"} state={coursesData.title} setState={setCoursesData} name={"title"} />
             <Textarea title={"Kurs haqida"} state={coursesData.description} setState={setCoursesData} name={"description"} />
             <div className="w-[100px] h-[100px] mt-3">
-              <img src={`http://localhost:5000/course-images/${course?.image}`} className="w-full h-full object-cover" alt="Img" />
+              <img src={`${IMG_URL}/course-images/${course?.image}`} className="w-full h-full object-cover" alt="Img" />
             </div>
             <ImgInput title={"Kurs rasmi"} type={"file"} state={coursesData.image} setState={setCoursesData} name={"image"} />
             <Input title={"Kurs narxi"} state={coursesData.price} setState={setCoursesData} name={"price"} />

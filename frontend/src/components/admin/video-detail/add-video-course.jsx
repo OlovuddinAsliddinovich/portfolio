@@ -34,9 +34,9 @@ const AddVideoCourse = ({ open, setOpen }) => {
       dispatch(addVideoSuccess(response.data));
       dispatch(getOneModuleSuccess(moduleData.data));
       const modules = await courseModuleService.getModules(course?.id);
+      setOpen(false);
       lessonCountHandler(modules.data, course?.id);
       dispatch(getModulesSuccess(modules.data));
-      setOpen(false);
       toast.success("Video qo'shildi!");
     } catch (error) {
       console.log(error);

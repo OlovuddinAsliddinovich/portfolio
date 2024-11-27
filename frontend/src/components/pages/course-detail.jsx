@@ -21,7 +21,6 @@ import { IMG_URL } from "@/services";
 import { getModulesFailure, getModulesStart, getModulesSuccess } from "@/slice/course-module-slice";
 import courseModuleService from "@/services/course-module-service";
 import { toast } from "react-toastify";
-import { Loader2 } from "lucide-react";
 import moment from "moment";
 import { useState } from "react";
 import Comments from "../layouts/comments";

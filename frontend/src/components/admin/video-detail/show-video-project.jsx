@@ -16,6 +16,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { LuLogOut } from "react-icons/lu";
 import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
+import { IMG_URL } from "@/services";
 
 const ShowVideoProject = () => {
   const { slug, videoId } = useParams();
@@ -101,7 +102,7 @@ const ShowVideoProject = () => {
             ) : (
               <>
                 <ReactPlayer
-                  url={`http://localhost:5000/course-videos/${video?.url}`}
+                  url={`${IMG_URL}/course-videos/${video?.url}`}
                   width={"100%"}
                   height={"100%"}
                   style={{ padding: "0px" }}

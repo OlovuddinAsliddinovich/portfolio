@@ -18,7 +18,6 @@ import { IMG_URL } from "@/services";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
 import Comments from "../layouts/comments";
 import moment from "moment";
 import CourseDetailSkeleton from "../skeletons/course.detail.skeleton";

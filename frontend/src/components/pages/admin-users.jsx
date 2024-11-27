@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUsersSuccess, signUserStart } from "@/slice/user-slice";
 import UserService from "@/services/user.service";
 import { FaSearch } from "react-icons/fa";
-import { Loader2 } from "lucide-react";
 import { IMG_URL } from "@/services";
 import { Button } from "../ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";

@@ -5,6 +5,7 @@ const FileService = require("./file.service");
 const User = require("../models/user.model");
 const Project = require("../models/project.model");
 const ProjectDto = require("../dtos/project.dto");
+const Video = require("../models/video.model");
 class ProjectService {
   async create(data, picture) {
     const existProject = await Project.findOne({ title: data.title });
@@ -69,13 +70,19 @@ class ProjectService {
   }
 
   async deleteProject(id) {
-    const existProject = await Project.findById(id);
+    const existProject = await Project.findById(id).populate("videos");
     if (!existProject) {
       throw BaseError.BadRequest("Loyiha topilmadi!");
     }
     if (existProject.image && existProject.image.length > 0) {
       FileService.deleteCourseImage(existProject.image);
     }
+
+    existProject.videos.forEach(async (video) => {
+      FileService.deleteCourseVideo(video.url);
+      await Video.findByIdAndDelete(video._id);
+    });
+
     return await Project.findByIdAndDelete(id);
   }
 

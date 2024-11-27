@@ -32,6 +32,7 @@ import {
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
 import CoursesSkeleton from "../skeletons/courses.skeleton";
 import { Helmet } from "react-helmet";
+import { IMG_URL } from "@/services";
 
 const AdminCourses = () => {
   const navigate = useNavigate();
@@ -104,7 +105,6 @@ const AdminCourses = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="w-full flex items-center justify-end">
-        {/* <h1 className="text-xl xs:text-3xl font-bold">Kurslar ro'yxati</h1> */}
         <Button className={`bg-green-600 hover:bg-blue-700`} onClick={() => setIsOpen(!isOpen)}>
           Qo'shish
         </Button>
@@ -143,7 +143,7 @@ const AdminCourses = () => {
                       <TableCell>
                         <img
                           className="min-w-10 min-h-10 max-w-10 max-h-10 rounded-sm object-cover"
-                          src={`http://localhost:5000/course-images/${course.image}`}
+                          src={`${IMG_URL}/course-images/${course.image}`}
                           alt="course img"
                         />
                       </TableCell>

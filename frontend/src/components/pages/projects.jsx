@@ -7,7 +7,6 @@ import { getProjectsFailure, getProjectsStart, getProjectsSuccess } from "@/slic
 import { projectService } from "@/services/project.service";
 import { useEffect } from "react";
 import ProjectCard from "../layouts/project-card";
-import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import CourseCardSkeleton from "../skeletons/course.card.skeleton";
 import { Helmet } from "react-helmet";

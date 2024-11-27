@@ -4,6 +4,8 @@ const Course = require("../models/course.model");
 const createSlug = require("../services/slug.generate");
 const FileService = require("./file.service");
 const User = require("../models/user.model");
+const Video = require("../models/video.model");
+const Module = require("../models/course.module.model");
 class CourseService {
   async create(data, picture) {
     const existCourse = await Course.findOne({ title: data.title });
@@ -66,13 +68,28 @@ class CourseService {
   }
 
   async deleteCourse(id) {
-    const existCourse = await Course.findById(id);
+    const existCourse = await Course.findById(id).populate({
+      path: "modules",
+      populate: {
+        path: "videos",
+      },
+    });
     if (!existCourse) {
       throw BaseError.BadRequest("Kurs topilmadi!");
     }
     if (existCourse.image && existCourse.image.length > 0) {
       FileService.deleteCourseImage(existCourse.image);
     }
+
+    existCourse.modules.forEach(async (module) => {
+      module.videos.forEach(async (video) => {
+        FileService.deleteCourseVideo(video.url);
+        await Video.findByIdAndDelete(video._id);
+      });
+
+      await Module.findByIdAndDelete(module._id);
+    });
+
     return await Course.findByIdAndDelete(id);
   }
 

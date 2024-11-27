@@ -41,6 +41,7 @@ import { secondsToMinutes } from "@/hooks";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/breadcrumb";
 import CourseDetailSkeleton from "../skeletons/course.detail.skeleton";
 import { Helmet } from "react-helmet";
+import { IMG_URL } from "@/services";
 
 const AdminCourseDetail = () => {
   const { slug } = useParams();
@@ -183,7 +184,7 @@ const AdminCourseDetail = () => {
               mode ? "bg-light" : "bg-gray-700"
             } p-4 flex sm:justify-start justify-center sm:items-start items-center mt-3 gap-3 flex-col sm:flex-row`}
           >
-            <img src={`http://localhost:5000/course-images/${course?.image}`} alt="Img" className="w-[300px] h-[200px] object-cover rounded-md" />
+            <img src={`${IMG_URL}/course-images/${course?.image}`} alt="Img" className="w-[300px] h-[200px] object-cover rounded-md" />
             <p className="line-clamp-[10]">{course?.description}</p>
           </div>
           <div className={`p-4 mt-3`}>

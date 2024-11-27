@@ -15,6 +15,7 @@ import DeleteProject from "../admin/projects/delete-project";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "../ui/breadcrumb";
 import CoursesSkeleton from "../skeletons/courses.skeleton";
 import { Helmet } from "react-helmet";
+import { IMG_URL } from "@/services";
 
 const AdminProjects = () => {
   const navigate = useNavigate();
@@ -95,7 +96,6 @@ const AdminProjects = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="w-full flex items-center justify-end">
-        {/* <h1 className="text-xl xs:text-3xl font-bold">Loyihalar ro'yxati</h1> */}
         <Button className={`bg-green-600 hover:bg-blue-700`} onClick={() => setAddOpen(true)}>
           Qo'shish
         </Button>
@@ -129,11 +129,7 @@ const AdminProjects = () => {
               {projects.map((project) => (
                 <TableRow key={project?._id} className="cursor-pointer " onClick={() => navigateHandler(project?.slug, project?._id)}>
                   <TableCell>
-                    <img
-                      className="w-10 h-10 rounded-sm object-cover"
-                      src={`http://localhost:5000/course-images/${project.image}`}
-                      alt="course img"
-                    />
+                    <img className="w-10 h-10 rounded-sm object-cover" src={`${IMG_URL}/course-images/${project.image}`} alt="course img" />
                   </TableCell>
                   <TableCell className="w-[220px] line-clamp-1 mt-2">{project.title}</TableCell>
                   <TableCell>{project.lesson_count}</TableCell>
