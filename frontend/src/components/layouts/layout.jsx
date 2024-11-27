@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
@@ -9,6 +8,7 @@ import { RxMoon } from "react-icons/rx";
 import { setMode, setSidebarOpen } from "@/slice/mode-slice";
 import { FaGithub, FaInstagram, FaLinkedin, FaTelegram, FaYoutube } from "react-icons/fa";
 import SidebarTablet from "./sidebartablet";
+import Navbar from "./navbar.jsx";
 
 const Layout = ({ children }) => {
   const { mode, sidebarOpen } = useSelector((state) => state.mode);
@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
       <div className={`${mode ? "bg-white" : "bg-slate"} scroll-smooth w-full`}>
         <div className={`mx-auto fixed w-full top-0 left-0 ${mode ? "bg-light" : "bg-slate"} z-[9]`}>
           <Navbar />
-
           <div className={`border-t border-gray-700 ${mode ? "bg-light" : "bg-slate"} flex justify-between items-center px-3`}>
             <div className="md:hidden flex p-2">
               <Button
