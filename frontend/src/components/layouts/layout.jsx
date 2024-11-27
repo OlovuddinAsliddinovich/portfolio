@@ -88,7 +88,9 @@ const Layout = ({ children }) => {
           <div className="relative border-t-[1px] border-gray-700">
             <div className={`fixed w-[288px] top-[80px] left-0 ${mode ? "bg-light" : "bg-slate"} h-screen z-[-1]`}>
               <SidebarTablet />
-              <Sidebar />
+              <>
+                <Sidebar />
+              </>
             </div>
             <div
               className={`absolute md:left-[288px] left-0 top-0 md:w-[calc(100%-288px)] w-full ${
