@@ -18,7 +18,9 @@ const Layout = ({ children }) => {
     <>
       <div className={`${mode ? "bg-white" : "bg-slate"} scroll-smooth w-full`}>
         <div className={`mx-auto fixed w-full top-0 left-0 ${mode ? "bg-light" : "bg-slate"} z-[9]`}>
-          <Navbar />
+          <>
+            <Navbar />
+          </>
           <div className={`border-t border-gray-700 ${mode ? "bg-light" : "bg-slate"} flex justify-between items-center px-3`}>
             <div className="md:hidden flex p-2">
               <Button
