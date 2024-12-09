@@ -1,7 +1,7 @@
 import axios from "axios";
 import userService from "./user.service";
 
-export const API_URL_AUTH = "https://course.nodirbekmarket.uz/api";
+export const API_URL_AUTH = "https://portfolio-backend-vwqv.onrender.com/api";
 
 export const $axios = axios.create({
   withCredentials: true,

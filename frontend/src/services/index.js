@@ -1,1 +1,1 @@
-export const IMG_URL = "https://course.nodirbekmarket.uz";
+export const IMG_URL = "https://portfolio-backend-vwqv.onrender.com";
