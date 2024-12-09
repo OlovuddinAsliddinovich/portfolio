@@ -33,8 +33,8 @@ $axios.interceptors.response.use(
         return $axios.request(originalRequest);
       } catch (error) {
         console.log("Not authorized!");
-        // localStorage.removeItem("accessToken");
-        // await userService.logout();
+        localStorage.removeItem("accessToken");
+        await userService.logout();
       }
     }
     throw error;
