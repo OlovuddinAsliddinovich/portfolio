@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { adminService } from "@/services/admin.service";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const AdminLogin = () => {
   const { mode } = useSelector((state) => state.mode);
@@ -16,9 +17,11 @@ const AdminLogin = () => {
   const loginAdmin = async (e) => {
     e.preventDefault();
     try {
+      console.log(adminData);
       const response = await adminService.login(adminData);
-      toast.success("Welcome Admin!", { position: "top-center" });
+      console.log(response.data);
       navigate("/admin-panel");
+      toast.success("Welcome Admin!", { position: "top-center" });
       return response;
     } catch (error) {
       console.log(error);
