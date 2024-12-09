@@ -20,6 +20,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       const response = await adminService.login(adminData);
+      Cookies.set("adminToken", response.token, { expires: 1 });
       navigate("/admin-panel");
       toast.success("Welcome Admin!", { position: "top-center" });
       return response;
