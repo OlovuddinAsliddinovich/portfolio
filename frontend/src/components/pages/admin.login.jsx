@@ -5,9 +5,11 @@ import { adminService } from "@/services/admin.service";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 const AdminLogin = () => {
   const { mode } = useSelector((state) => state.mode);
+  const adminToken = Cookies.get("adminToken");
   const [adminData, setAdminData] = useState({
     username: "",
     password: "",
@@ -17,9 +19,7 @@ const AdminLogin = () => {
   const loginAdmin = async (e) => {
     e.preventDefault();
     try {
-      console.log(adminData);
       const response = await adminService.login(adminData);
-      console.log(response);
       navigate("/admin-panel");
       toast.success("Welcome Admin!", { position: "top-center" });
       return response;
@@ -28,6 +28,12 @@ const AdminLogin = () => {
       toast.error(error?.response?.data?.message);
     }
   };
+
+  useEffect(() => {
+    if (adminToken) {
+      navigate("/admin-panel");
+    }
+  }, []);
 
   return (
     <div className={`w-full min-h-screen pt-16 xs:pt-32 px-4 ${mode ? "bg-blue-300 text-gray-900" : "bg-darkBlue text-white"}`}>
