@@ -19,7 +19,7 @@ const AdminLogin = () => {
     try {
       console.log(adminData);
       const response = await adminService.login(adminData);
-      console.log(response.data);
+      console.log(response);
       navigate("/admin-panel");
       toast.success("Welcome Admin!", { position: "top-center" });
       return response;
