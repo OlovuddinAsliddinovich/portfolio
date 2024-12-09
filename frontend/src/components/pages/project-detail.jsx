@@ -122,7 +122,7 @@ const ProjectDetail = () => {
               </div>
             </div>
             <div className="md2:w-[400px] w-full  lg:w-full h-[230px]">
-              <img src={`${IMG_URL}/course-images/${project?.image}`} alt="Img" className="w-full h-[230px] rounded-sm object-cover" />
+              <img src={`${IMG_URL}/course-images/${project?.image}`} alt="Img" className="w-full h-[230px] rounded-sm object-contain" />
             </div>
           </section>
           <section className="mt-10 flex justify-between gap-8 flex-col lg:flex-row">

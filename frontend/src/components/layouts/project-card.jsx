@@ -17,7 +17,7 @@ const ProjectCard = ({ image, title, slug, directionCategory, ratingCategory, pr
         <Button className={"w-[33%] h-[25px] hover:bg-gray-900 rounded-[3px] bg-gray-800"}>{ratingCategory}</Button>
         <Button className={"w-[33%] h-[25px] hover:bg-blue-900 rounded-[3px] bg-blue-800 text-gray-950"}>{priceCategory}</Button>
       </div>
-      <img src={`${IMG_URL}/course-images/${image}`} alt="backend" className="w-full object-cover h-[190px] rounded-sm img-animation" />
+      <img src={`${IMG_URL}/course-images/${image}`} alt="backend" className="w-full object-contain h-[190px] rounded-sm img-animation" />
       <CardTitle className={`text-xl font-bold font-spaceGrotesk pt-2 ${mode ? "text-black" : "text-white"}`}>{title}</CardTitle>
     </Card>
   );

@@ -100,7 +100,7 @@ const AdminProjectDetail = () => {
             <img
               src={`${IMG_URL}/course-images/${project?.image}`}
               alt="Kurs rasmi"
-              className="w-full sm:w-[40%] h-[200px] rounded-[5px] sm:mx-3 object-cover"
+              className="w-full sm:w-[40%] h-[200px] rounded-[5px] sm:mx-3 object-contain"
             />
             <span className="sm:w-[60%] w-full line-clamp-[10] text-justify">{project?.description}</span>
           </div>

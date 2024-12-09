@@ -184,7 +184,7 @@ const AdminCourseDetail = () => {
               mode ? "bg-light" : "bg-gray-700"
             } p-4 flex sm:justify-start justify-center sm:items-start items-center mt-3 gap-3 flex-col sm:flex-row`}
           >
-            <img src={`${IMG_URL}/course-images/${course?.image}`} alt="Img" className="w-[300px] h-[200px] object-cover rounded-md" />
+            <img src={`${IMG_URL}/course-images/${course?.image}`} alt="Img" className="w-[300px] h-[200px] object-contain rounded-md" />
             <p className="line-clamp-[10]">{course?.description}</p>
           </div>
           <div className={`p-4 mt-3`}>
