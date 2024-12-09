@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const BASE_URL = "http://3.85.3.18:5000/api";
+export const BASE_URL = "https://course.nodirbekmarket.uz/api";
 
 const apiSimple = axios.create({
   withCredentials: true,
