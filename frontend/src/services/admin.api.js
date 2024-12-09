@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const BASE_URL = "https://portfolio-backend-awgh.onrender.com/api";
+export const BASE_URL = "https://portfolio-backend-imen.onrender.com/api";
 
 const apiSimple = axios.create({
   withCredentials: true,
